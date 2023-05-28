@@ -1,4 +1,7 @@
-<h1>{{ object.title }}</h1>
-<h2>{{ object.author }}</h2>
-
-<p>{{ object.content }}</p>
+{% extends "base_menu.html" %}
+{% block content %}
+    <h1>{{ object.title }}</h1>
+    <h4>{{ object.author }}</h4>
+    <hr>
+    <p>{{ object.content }}</p>
+{% endblock content %}

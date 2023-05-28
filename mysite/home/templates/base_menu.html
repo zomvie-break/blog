@@ -7,11 +7,14 @@
     </div>
     <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
     <ul class="nav navbar-nav">
-      {% url 'ads' as ads %}
-      <li {% if request.get_full_path == ads %}class="active"{% endif %}>
-          <a href="{% url 'home:home' %}">Home</a></li>
+      {% url 'home' as home %}
+      <li {% if request.get_full_path == home %}class="active"{% endif %}>
+        <a href="{% url 'home:home' %}">Home</a></li>
+      {% url 'posts_list' as posts_list %}
+      <li {% if request.get_full_path == posts_list %}class="active"{% endif %}>
+        <a href="{% url 'bposts:posts_list' %}">Posts</a></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right navbar-center" style="color:#ccc">
         <li>
             Victor
         </li>
