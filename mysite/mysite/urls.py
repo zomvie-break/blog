@@ -23,5 +23,6 @@ urlpatterns = [
     path('', include('home.urls')),
     path('blog/', include('bposts.urls')),
     # from allauth
-    path('accounts/', include('allauth.urls'))
+    path('accounts/', include('allauth.urls')),
+    path('projects/', include('myprojects.urls')),
 ]

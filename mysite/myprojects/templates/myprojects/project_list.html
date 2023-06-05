@@ -1,0 +1,17 @@
+{% extends "base_menu.html" %}
+{% block content %}
+
+    <h1>My projects</h1>
+
+    {% for project in object_list %}
+        <ul>
+            <li>{{project.title}} - <a href="{{ project.url }}">GitHub link</a></li>
+            <p>{{ project.description }}</p>
+            <hr>
+            
+        </ul>
+    {% empty %}
+        <p>There are no projects yet! :( </p>
+    {% endfor %}
+{% endblock content %}
+

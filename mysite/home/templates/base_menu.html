@@ -13,11 +13,9 @@
       {% url 'posts_list' as posts_list %}
       <li {% if request.get_full_path == posts_list %}class="active"{% endif %}>
         <a href="{% url 'bposts:posts_list' %}">Posts</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right navbar-center" style="color:#ccc">
-        <li>
-            Victor
-        </li>
+      {% url 'project_list' as project_list %}
+      <li {% if request.get_full_path == project_list %}class="active"{% endif %}>
+        <a href="{% url 'myprojects:project_list' %}">Projects</a></li>
     </ul>
   </div>
 </nav>
