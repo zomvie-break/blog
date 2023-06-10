@@ -1,0 +1,14 @@
+{% extends 'base_menu.html' %}
+{% load static %}
+{% block content %}
+    <h1>About me</h1>
+    {% for profile in profiles %}
+        <p>{{ profile.name }}</p>
+        <h4>{{ profile.description }}</h4>
+        <p><a href="{{profile.github_url}}">GitHub</a> | <a href="{{profile.linkedin_url}}">LinkedIn</a> | <a href="{% static 'aboutme/CV_Victor_Vaquero.pdf' %}" target="_new">CV</a></p>
+        
+        
+    {% empty %}
+    {% endfor %}
+
+{% endblock content %}

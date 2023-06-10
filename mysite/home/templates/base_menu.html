@@ -10,12 +10,18 @@
       {% url 'home' as home %}
       <li {% if request.get_full_path == home %}class="active"{% endif %}>
         <a href="{% url 'home:home' %}">Home</a></li>
+
       {% url 'posts_list' as posts_list %}
       <li {% if request.get_full_path == posts_list %}class="active"{% endif %}>
         <a href="{% url 'bposts:posts_list' %}">Posts</a></li>
+
       {% url 'project_list' as project_list %}
       <li {% if request.get_full_path == project_list %}class="active"{% endif %}>
         <a href="{% url 'myprojects:project_list' %}">Projects</a></li>
+
+      {% url 'about_me' as about_me %}
+      <li {% if request.get_full_path == about_me %}class="active"{% endif %}>
+        <a href="{% url 'aboutme:about_me' %}">About me</a></li>
     </ul>
   </div>
 </nav>

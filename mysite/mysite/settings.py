@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'bposts.apps.BpostsConfig',
     'myprojects.apps.MyprojectsConfig',
+    'aboutme.apps.AboutmeConfig',
     
     # django allauth
     'allauth',
