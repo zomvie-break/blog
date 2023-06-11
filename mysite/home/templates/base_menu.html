@@ -1,28 +1,43 @@
 {% extends "base_bootstrap.html" %}
+{% load home_extras %}
+{% load static %}
 {% block navbar %}
-<nav class="navbar navbar-default navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/">{{ settings.APP_NAME }}</a>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'home:home' %}">
+      <img src="{% static 'home/favicon-32x32.png' %}" alt="" width="30" length="30">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      {% with full_path=request.get_full_path %}
+      <ul class="navbar-nav">
+        {% url 'home:home' as home %}
+        <li class="nav-item {% active full_path home %}">
+          <a class="nav-link" href="{% url 'home:home' %}">Home</a>
+        </li>
+
+        {% url 'bposts:posts_list' as posts_list %}
+        <li class="nav-item {% active full_path posts_list %}">
+          <a class="nav-link" href="{% url 'bposts:posts_list' %}">Posts</a>
+        </li>
+
+        {% url 'myprojects:project_list' as project_list %}
+        <li class="nav-item {% active full_path project_list %}"> 
+          <a class="nav-link" href="{% url 'myprojects:project_list' %}">Projects</a>
+        </li>
+
+        {% url 'aboutme:about_me' as about_me %}
+        <li class="nav-item {% active full_path about_me %}">
+          <a class="nav-link" href="{% url 'aboutme:about_me' %}">About me</a>
+        </li>
+      </ul>
+      {% endwith %}
     </div>
-    <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
-    <ul class="nav navbar-nav">
-      {% url 'home' as home %}
-      <li {% if request.get_full_path == home %}class="active"{% endif %}>
-        <a href="{% url 'home:home' %}">Home</a></li>
+  </nav>
 
-      {% url 'posts_list' as posts_list %}
-      <li {% if request.get_full_path == posts_list %}class="active"{% endif %}>
-        <a href="{% url 'bposts:posts_list' %}">Posts</a></li>
 
-      {% url 'project_list' as project_list %}
-      <li {% if request.get_full_path == project_list %}class="active"{% endif %}>
-        <a href="{% url 'myprojects:project_list' %}">Projects</a></li>
 
-      {% url 'about_me' as about_me %}
-      <li {% if request.get_full_path == about_me %}class="active"{% endif %}>
-        <a href="{% url 'aboutme:about_me' %}">About me</a></li>
-    </ul>
-  </div>
-</nav>
 {% endblock %}
+
