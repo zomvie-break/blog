@@ -52,7 +52,14 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.github',
 
+    # extras
+    'crispy_forms',
+    "crispy_bootstrap4",
 ]
+
+# crispy requirement
+CRISPY_TEMPLATE_PACK = 'bootstrap4' 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
