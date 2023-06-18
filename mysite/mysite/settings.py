@@ -57,6 +57,9 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
 ]
 
+# This is required for email validation, since I dont have a SMTP server in my machine
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # crispy requirement
 CRISPY_TEMPLATE_PACK = 'bootstrap4' 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
@@ -83,7 +86,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        "DIRS": [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

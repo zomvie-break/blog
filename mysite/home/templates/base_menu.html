@@ -27,11 +27,24 @@
         <li class="nav-item {% active full_path project_list %}"> 
           <a class="nav-link" href="{% url 'myprojects:project_list' %}">Projects</a>
         </li>
-
+        
         {% url 'aboutme:about_me' as about_me %}
         <li class="nav-item {% active full_path about_me %}">
           <a class="nav-link" href="{% url 'aboutme:about_me' %}">About me</a>
         </li>
+        
+        {% if user.is_authenticated %}
+          {% url 'account_logout' as logout %}
+          <li class="nav-item {% active full_path logout %}">
+            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+          </li>
+        {% else %}
+          {% url 'account_login' as login %}
+          <li class="nav-item {% active full_path login %}">
+            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+          </li>
+
+        {% endif %}
       </ul>
       {% endwith %}
     </div>
