@@ -10,39 +10,20 @@
 
 <h1>{% trans "Sign In" %}</h1>
 
-{% get_providers as socialaccount_providers %}
-
-{% if socialaccount_providers %}
 <p>{% blocktrans with site.name as site_name %}Please sign in with one
-of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+of your existing third party accounts.{% endblocktrans %}</p>
+
+{% get_providers as socialaccount_providers %}
+{% for provider in socialaccount_providers %}
+
+<p>At the moment, I only support {{provider.id}} as a login method.</p>
 
 <div class="socialaccount_ballot">
-
-  <ul class="socialaccount_providers">
-    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-  </ul>
-
-  <div class="login-or">{% trans 'or' %}</div>
-
+  {% if provider.id == "github" %}
+  <a href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}" class="btn btn-info"><i class="fab fa-github"></i> Login with GitHub</a>
+  {% else %}
+  <p>At the moment, I do not support log in. I'll implement it as soon as possible. Cheers! </p>
+  {% endif %}
 </div>
-
-{% include "socialaccount/snippets/login_extra.html" %}
-
-{% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-{% endif %}
-
-{% load crispy_forms_tags %}
-<form class="login" method="POST" action="{% url 'account_login' %}">
-    {% csrf_token %}
-    {{ form|crispy }}
-    {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
-    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-    <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-</form>
-
+{% endfor %}
 {% endblock content %}

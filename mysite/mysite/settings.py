@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     # extras
     'crispy_forms',
     "crispy_bootstrap4",
+    'django_bootstrap_icons',
 ]
 
 # This is required for email validation, since I dont have a SMTP server in my machine
