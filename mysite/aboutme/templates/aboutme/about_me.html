@@ -5,7 +5,7 @@
     {% for profile in profiles %}
         <p>{{ profile.name }}</p>
         <h4>{{ profile.description|linebreaks }}</h4>
-        <p><a href="{{profile.github_url}}">GitHub</a> | <a href="{{profile.linkedin_url}}">LinkedIn</a> | <a href="{% static 'aboutme/CV_Victor_Vaquero.pdf' %}" target="_new">CV</a></p>
+        <p><a href="{{profile.github_url}}"><i class="fab fa-github"></i> GitHub</a> | <a href="{{profile.linkedin_url}}"><i class="fab fa-linkedin"></i> LinkedIn</a> | <a href="{% static 'aboutme/CV_Victor_Vaquero.pdf' %}" target="_new"><i class="fas fa-file"></i> CV</a></p>
         
         
     {% empty %}
