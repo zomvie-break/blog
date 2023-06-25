@@ -171,3 +171,4 @@ class Prod(Dev):
 
     DEBUG = False
     SECRET_KEY = values.SecretValue()
+    ALLOWED_HOSTS = values.ListValue(['localhost','127.0.0.1'])
