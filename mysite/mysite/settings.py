@@ -167,7 +167,7 @@ class Dev(Configuration):
     LOGIN_REDIRECT_URL = '/'
 
 class Prod(Dev):
-    DOTENV = os.path.join(BASE_DIR, '.env')
+    DOTENV = os.path.join(BASE_DIR, 'mysite/.env')
 
     DEBUG = False
     SECRET_KEY = values.SecretValue()
