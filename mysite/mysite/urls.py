@@ -18,8 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
+# imports required to hide my admin url
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(os.getenv("DJANGO_URL_ADMIN","") + 'admin/', admin.site.urls), # secret admin url
     path('', include('home.urls')),
     path('blog/', include('bposts.urls')),
     # from allauth
