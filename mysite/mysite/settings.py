@@ -173,3 +173,7 @@ class Prod(Dev):
     DEBUG = False
     SECRET_KEY = values.SecretValue()
     ALLOWED_HOSTS = values.ListValue(['localhost','127.0.0.1'])
+
+    # check the sites field in the admin page
+    # I'va already added another site throught the admin GUI
+    SITE_ID = 2
