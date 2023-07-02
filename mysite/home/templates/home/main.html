@@ -7,7 +7,7 @@
         <div class="media-body">
           <h2 class="mt-0">{{object.title}}</h2>
           <p class="mt-0">By <small>{{object.creator}}</small></p>
-          <p>{{object.content}}</p>
+          <p>{{object.content|linebreaks}}</p>
         </div>
       </div>
 {% endblock content %}
