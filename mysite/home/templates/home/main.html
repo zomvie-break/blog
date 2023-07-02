@@ -1,16 +1,13 @@
 {% extends 'base_menu.html' %}
 
 {% block content %}
-    <h1>{{title}}</h1>
-    <div class="container text-dark mt-5">
-        <div class="row justify-content-md-center">
-            <div class="col-md-5 p-3">
-                {% if user.is_authenticated %}
-                    <p>Welcome {{ user.username }}</p>
-                {% else %}
-                    <p>Welcome friend, please log in.</p>
-                {% endif %}
-            </div>
+
+    <div class="media">
+        <img class="align-self-center mr-3" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Python_icon_%28black_and_white%29.svg" width="100" height="100" alt="python svg">
+        <div class="media-body">
+          <h2 class="mt-0">{{object.title}}</h2>
+          <p class="mt-0">By <small>{{object.creator}}</small></p>
+          <p>{{object.content}}</p>
         </div>
-    </div>
+      </div>
 {% endblock content %}
