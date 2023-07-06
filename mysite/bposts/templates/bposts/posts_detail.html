@@ -3,7 +3,7 @@
     <h1>{{ object.title }}</h1>
     <h4>{{ object.author }}</h4>
     <hr>
-    <p>{{ object.content|linebreaks}}</p>
+    <p>{{ object.content|linebreaks|urlizetrunc:30}}</p>
 
     <h2>Comments <i class="far fa-comments"></i></h2>
     <hr>
