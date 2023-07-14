@@ -31,5 +31,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('projects/', include('myprojects.urls')),
     path('aboutme/', include('aboutme.urls')),
+    path('todo/', include('todo.urls')),
 
 ]
