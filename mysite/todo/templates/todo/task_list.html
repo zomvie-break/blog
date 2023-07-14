@@ -1,13 +1,13 @@
 <h1>Tasks!</h1>
 
 {% for task in object_list %}
-    <div class="task-item-{{task.id}}">
-        {% if task.completed %}
-        <p><s>{{task}}</s></p>
-        {% else %}
-        <p>{{task}}</p>
-        {% endif %}
-    </div>
+<div class="task-item-{{task.id}}">
+    {% if task.completed %}
+    <p><s>{{task}}</s></p>
+    {% else %}
+    <p>{{task}}</p>
+    {% endif %}
+</div>
 {% empty %}
-    <div> empty </div>
+<div> empty </div>
 {% endfor %}

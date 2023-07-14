@@ -4,3 +4,4 @@ __pycache__/
 *.py[cod]
 mysite/mysite/.env
 static/
+.vscode/
