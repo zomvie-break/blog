@@ -59,6 +59,9 @@ class Dev(Configuration):
         # extras
         'crispy_forms',
         "crispy_bootstrap4",
+
+        # django restframework
+        'rest_framework',
     ]
 
     # This is required for email validation, since I dont have a SMTP server in my machine
