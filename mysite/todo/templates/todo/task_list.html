@@ -11,7 +11,7 @@
         <form action="" id="form">
             <div class="flex-wrapper">
                 <div style="flex: 6;">
-                    <input type="text" name="title" id="input-title" placeholder="Add task">
+                    <input type="text" name="title" id="title" placeholder="Add task">
                 </div>
                 <div style="flex: 1;">
                     <input type="submit" class="btn" id="submit">
@@ -20,19 +20,10 @@
         </form>
     </div>
 
-    <!-- adding the items -->
-    {% for task in object_list %}
-    <div class="task-item-{{task.id}} task-wrapper flex-wrapper">
-        {% if task.completed %}
-        <p><s>{{task}}</s></p>
-        {% else %}
-        
-        <p>{{task}}</p>
-        {% endif %}
+    <div id="list-wrapper">
+
     </div>
-    {% empty %}
-    <div> empty </div>
-    {% endfor %}
 </div>
+
 <script type="text/javascript" src="{% static 'todo/todo.js' %}"></script>
 {% endblock content %}
