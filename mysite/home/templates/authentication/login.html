@@ -10,11 +10,9 @@
         {% csrf_token %}
         {{form.as_p}}
         <input class="button" type="submit" value="Login">
-    </form>
-    {% comment "" %}
-    
+    </form>    
     <p>Don't have an account? <a href="{% url 'register' %}">Register</a> </p>
-    {% endcomment %}
+
 </div>
 
 {% endblock content%}
