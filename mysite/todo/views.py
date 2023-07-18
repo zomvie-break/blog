@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
@@ -23,6 +23,10 @@ class CustomLoginView(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('task-list')
+
+class CustomLogoutView(LogoutView):
+    template_name = 'authentication/logout.html'
+    
 
 # vies for tasks
 class TaskListView(LoginRequiredMixin, ListView):
