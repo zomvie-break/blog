@@ -6,8 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login 
 from django.views.generic.list import ListView
-from django.views.generic.edit import UpdateView, FormView
-
+from django.views.generic.edit import UpdateView, FormView, CreateView
 
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
@@ -56,8 +55,6 @@ class TaskListView(LoginRequiredMixin, ListView):
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
     template_name = "task_update.html"
-
-
 
 # APIs
 

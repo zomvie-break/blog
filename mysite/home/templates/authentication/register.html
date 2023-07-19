@@ -1,20 +1,32 @@
 {% extends 'base_menu.html' %}
+{% load static %}
 
 {% block content %}
-<form action="" method="post"> 
-    {% csrf_token %}
-    <label for="username">{{ form.username.label }}</label>
-    {{ form.username }}
+<link rel="stylesheet" href="{% static 'todo/todo.css' %}">
+<div class="pad-container">
+    <div class="todo-container">
+        <div class="header-bar">
+            <h1>Register</h1>
+        </div>
+        <div class="card-body">
 
-    <label for="password1">{{ form.password1.label }}</label>
-    {{ form.password1 }}
+            <form action="" method="post">
+                {% csrf_token %}
+                <label for="username">{{ form.username.label }}</label>
+                {{ form.username }}
+                
+                <label for="password1">{{ form.password1.label }}</label>
+                {{ form.password1 }}
+                
+                <label for="password2">{{ form.password2.label }}</label>
+                {{ form.password2 }}
+                
+                <input style="margin-top: 10px;" type="submit" value="Register" class="button btn" >
+            </form>
+            
+            <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+    </div>
+</div>
 
-    <label for="password2">{{ form.password2.label }}</label>
-    {{ form.password2 }}
-
-    <input type="submit" value="Register" class="btn">
-2
-</form>
-
-<p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
 {% endblock content %}

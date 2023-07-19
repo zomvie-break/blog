@@ -1,9 +1,17 @@
 {% extends 'base_menu.html' %}
+{% load static %}
+
 {% block content %}
-
-<h1>{{ title }}</h1>
-<p>Thank you for using my to-do app.</p>
-
-<p><a href="{% url 'login' %}">Click here to login again</a>
-</p>
+<link rel="stylesheet" href="{% static 'todo/todo.css' %}">
+<div class="pad-container">
+    <div class="todo-container">
+        <div class="header-bar">
+            <h1>{{ title }}</h1>
+            <a href="{% url 'login' %}">Log in</a>
+        </div>
+        <div class="card-body">
+            <p>Thank you for using my to-do app.</p>
+        </div>
+    </div>
+</div>
 {% endblock content %}
