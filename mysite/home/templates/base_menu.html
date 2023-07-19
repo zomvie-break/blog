@@ -32,6 +32,11 @@
         <li class="nav-item {% active full_path about_me %}">
           <a class="nav-link" href="{% url 'aboutme:about_me' %}">About me</a>
         </li>
+
+        {% url 'todo-list:task-list' as task_list %}
+        <li class="nav-item {% active full_path task_list %}">
+          <a class="nav-link" href="{% url 'todo-list:task-list' %}">Todo List</a>
+        </li>
         
         {% if user.is_authenticated %}
           {% url 'account_logout' as logout %}

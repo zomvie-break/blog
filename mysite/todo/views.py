@@ -1,12 +1,14 @@
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 
-from django.contrib.auth.views import LoginView, LogoutView
+from allauth.account.views import LoginView
+# from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login 
 from django.views.generic.list import ListView
-from django.views.generic.edit import UpdateView, FormView, CreateView
+from django.views.generic.edit import UpdateView, FormView
 
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
@@ -19,12 +21,13 @@ from .serializers import TaskSerializer
 
 # views for authentication
 class CustomLoginView(LoginView):
-    template_name = 'authentication/login.html'
+    # using allauth template here
+    template_name = 'account/login.html'
     fields = '__all__'
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        return reverse_lazy('task-list')
+        return reverse_lazy('todo-list:task-list')
 
 class CustomLogoutView(LogoutView):
     template_name = 'authentication/logout.html'
@@ -33,7 +36,7 @@ class RegisterView(FormView):
     template_name = 'authentication/register.html'
     form_class = UserCreationForm
     redirect_authenticated_user = True
-    success_url = reverse_lazy('task-list')
+    success_url = reverse_lazy('todo-list:task-list')
 
     def form_valid(self, form):
         user = form.save()
@@ -43,7 +46,7 @@ class RegisterView(FormView):
 
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
-            return redirect('task-list')
+            return redirect('todo-list:task-list')
         return super(RegisterView, self ).get(*args, **kwargs)
 
     

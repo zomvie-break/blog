@@ -3,6 +3,8 @@ from .views import TaskListView
 from .views import taskList, taskDetail, taskCreate, taskUpdate, taskDelete
 from .views import CustomLoginView, CustomLogoutView, RegisterView
 
+app_name = "todo-list"
+
 urlpatterns = [
     path("", TaskListView.as_view(), name="task-list"),
     path("login/", CustomLoginView.as_view(), name="login"),

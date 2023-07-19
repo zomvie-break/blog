@@ -2,28 +2,46 @@
 
 {% load i18n %}
 {% load account socialaccount %}
+{% load static %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 
 {% block content %}
 
-<h1>{% trans "Sign In" %}</h1>
+<link rel="stylesheet" href="{% static 'todo/todo.css' %}">
+<div class="pad-container">
+  <div class="todo-container">
 
-<p>{% blocktrans with site.name as site_name %}Please sign in with one
-of your existing third party accounts.{% endblocktrans %}</p>
+    <div class="header-bar">
+      <h1>Login</h1>
+    </div>
 
-{% get_providers as socialaccount_providers %}
-{% for provider in socialaccount_providers %}
+    <div class="card-body">
+      <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input style="margin-bottom: 10px" class="button" type="submit" value="Login">
+      </form>
+      <p>Don't have an account? <a href="{% url 'todo-list:register' %}">Register</a> </p>
 
-<p>At the moment, I only support {{provider.id}} as a login method.</p>
+      <hr>
+      {% get_providers as socialaccount_providers %}
+      {% for provider in socialaccount_providers %}
 
-<div class="socialaccount_ballot">
-  {% if provider.id == "github" %}
-  <a href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}" class="btn btn-info"><i class="fab fa-github"></i> Login with GitHub</a>
-  {% else %}
-  <p>At the moment, I do not support log in. I'll implement it as soon as possible. Cheers! </p>
-  {% endif %}
+      <div class="socialaccount_ballot">
+        {% if provider.id == "github" %}
+        <a href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"
+          class="btn btn-info"><i class="fab fa-github"></i> Login with GitHub</a>
+        {% else %}
+        <p>At the moment, I do not support social accounts log in. I'll implement it as soon as possible. Cheers! </p>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
 </div>
-{% endfor %}
+
+
 {% endblock content %}
