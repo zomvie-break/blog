@@ -3,7 +3,6 @@ This js file is to add funcitonality to the todo app.
 Check that the URLS are correctly set up according to the server.
 */
 
-var hostname = window.location.hostname;
 
 function getCookie(name) {
     let cookieValue = null;
@@ -30,7 +29,8 @@ buildList()
 function buildList() {
     var wrapper = document.getElementById('list-wrapper')
     // wrapper.innerHTML=''
-    var url = hostname + '/todo/api/task-list/'
+
+    var url = '/todo/api/task-list/'
 
     fetch(url)
         .then((resp) => resp.json())
@@ -103,11 +103,10 @@ var form = document.getElementById('form-wrapper')
 form.addEventListener('submit', function (e) {
     e.preventDefault()
     console.log('Form submitted')
-
-    var url = hostname + '/todo/api/task-create/'
+    var url = '/todo/api/task-create/'
     var title = document.getElementById('title').value
     if (activeItem != null) {
-        var url = hostname + `/todo/api/task-update/${activeItem.id}/`
+        var url = `/todo/api/task-update/${activeItem.id}/`
         activeItem = null
     }
 
@@ -136,7 +135,7 @@ function editItem(item) {
 
 function deleteItem(item) {
     console.log('delete clicked', item.id)
-    var url = hostname + `/todo/api/task-delete/${item.id}/`
+    var url = `/todo/api/task-delete/${item.id}/`
     fetch(url, {
         method: 'DELETE',
         headers: {
@@ -152,7 +151,8 @@ function deleteItem(item) {
 function strikeUnstrike(item) {
     console.log('strike clicked')
     item.completed = !item.completed
-    var url = hostname + `/todo/api/task-update/${item.id}/`
+
+    var url = `/todo/api/task-update/${item.id}/`
     fetch(url, {
         method: 'POST',
         headers: {
