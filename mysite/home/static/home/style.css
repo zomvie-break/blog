@@ -98,6 +98,10 @@ article figure img {
     color: #2e2f3e;
 }
 
+#about-me p {
+    text-align: justify;
+}
+
 #social-links ul {
     display: flex;
     flex-direction: row;
