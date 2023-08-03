@@ -47,7 +47,6 @@ class Dev(Configuration):
         'home.apps.HomeConfig',
         'bposts.apps.BpostsConfig',
         'myprojects.apps.MyprojectsConfig',
-        'aboutme.apps.AboutmeConfig',
         'todo.apps.TodoConfig',
         
         # django allauth
