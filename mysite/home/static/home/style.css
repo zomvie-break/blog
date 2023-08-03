@@ -152,7 +152,7 @@ a:hover {
     background-color: #ff8906;
     border-radius: 10px;
     /* padding: 20px; */
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     /* change this width to vary how many 
     projects to display in line */
     min-width: 100%;
