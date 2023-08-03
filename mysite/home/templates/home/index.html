@@ -1,0 +1,101 @@
+{% extends 'base_menu.html' %}
+{% load static %}
+
+{% block head %}
+<!-- google fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'home/style.css' %}">
+{% endblock head %}
+
+{% block content %}
+<main>
+  <section id="container-hello">
+    <small>HELLO, I'm </small>
+    <h1>Victor M. Vaquero</h1>
+  </section>
+  {% comment %} SECTION 1: about me {% endcomment %}
+  <section id="container-aboutme">
+    <article id="about-me">
+      <figure>
+        <img src="{% static 'home/img-aboutme.png' %}" alt="my picture">
+      </figure>
+      <div id="social-links">
+        <ul>
+          <li><a href="https://github.com/zomvie-break/" target="new"><i class="fab fa-github"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/victor-vaquero/" target="new"><i class="fab fa-linkedin"></i></a>
+          </li>
+          <li><a href="{% static 'home/CV_Victor_Vaquero.pdf' %}" target="new"><i class="fas fa-file-alt"></i></a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>About me</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta ipsum reiciendis consequatur, temporibus vero
+          sapiente, illum iusto deleniti autem ut similique sint necessitatibus, dolores consequuntur placeat? Libero at
+          explicabo dignissimos?2
+        </p>
+      </div>
+    </article>
+  </section>
+
+  {% comment %} SECTION 2: Projects {% endcomment %}
+  <section id="container-projects">
+    <article>
+      <h2>Projects</h2>
+      <ul>
+        <li>
+          <a href="#">
+            <div>
+              <h3>Project 1</h3>
+              <p>Project description</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div>
+              <h3>Project 1</h3>
+              <p>Project description</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div>
+              <h3>Project 1</h3>
+              <p>Project description</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </article>
+  </section>
+
+  {% comment %} SECTION 3: POSTS {% endcomment %}
+  <section id="container-posts">
+    <article>
+      <h3>Posts</h3>
+
+    </article>
+  </section>
+</main>
+
+<div class="filler">
+  <p>Some text from filler</p>
+</div>
+
+<footer>
+  <div>
+    <h3>Contact me</h3>
+    <p>victormiguelvaquero@gmail.com</p>
+  </div>
+  <div>
+    <p>Copyright Victor M. Vaquero</p>
+  </div>
+</footer>
+
+
+{% endblock content %}

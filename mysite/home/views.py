@@ -5,7 +5,7 @@ from .models import Homepage
 # Create your views here.
 
 class MainView(View):
-    template_name='home/main.html'
+    template_name='home/index.html'
     def get(self, request):
         homepage = Homepage.objects.get(id=1)
         context = {'object':homepage}
