@@ -63,8 +63,19 @@
   {% comment %} SECTION 3: POSTS {% endcomment %}
   <section id="container-posts">
     <article>
-      <h3>Posts</h3>
-      <p>coming soon! Template tag in the making</p>
+      <h2>Posts</h2>
+      <ul>
+        {% for post in posts %}
+        <li>
+          <a href="{% url 'bposts:posts_detail' post.id %}">
+            <div>
+              <h3>{{ post.title}}</h3>
+              <p><small>Created on: {{ post.created_at | date }}</small></p>
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
     </article>
   </section>
 </main>

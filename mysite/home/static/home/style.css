@@ -24,7 +24,7 @@ main {
     /* grid */
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 100px repeat(3, 1fr);
+    grid-template-rows: 100px repeat(2, 1fr) auto;
     grid-template-areas: 
         "header header"
         "aboutme projects"
@@ -169,6 +169,37 @@ a:hover {
     font-weight: 400;
 }
 
+#container-posts ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-left: -40px;
+}
+
+#container-posts li {
+    list-style: none;
+    background-color: #ff8906;
+    border-radius: 10px;
+    /* padding: 20px; */
+    flex: 1 1 auto;
+    /* change this width to vary how many 
+    projects to display in line */
+    /* min-width: 100%; */
+}
+
+
+#container-posts div {
+    margin: 20px 20px;
+    color: #fffffe;
+    font-weight: 400;
+}
+
+#container-posts li:hover {
+    background-color: #f25f4c;
+    /* text-decoration: dashed; */
+}
 .filler {
     flex: 1;
 }
