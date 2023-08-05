@@ -1,11 +1,49 @@
 {% extends "base_menu.html" %}
+{% load static %}
+
+{% block head %}
+<!-- google fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+<!-- stylesheet -->
+<link rel="stylesheet" href="{% static 'bposts/style.css' %}">
+{% endblock head %}
+
 {% block content %}
-    <h1>Posts</h1>
-    <ul>
-        {% for post in object_list %}
-            <li>{{ post.title }} <a href={% url 'bposts:posts_detail' post.id %}>Read more...</a></li>
-        {% empty %}
+<main>
+    <section class="wrapper" id="wrapper-heading">
+        <h1>Posts</h1>
+    </section>
+
+    <section class="wrapper" id="wrapper-posts">
+        <ul>
+            {% for post in object_list %}
+            <li>
+                <a href="{% url 'bposts:posts_detail' post.id %}">
+                    <div class="item-post">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.content | truncatechars:75}}</p>
+                    </div>
+                </a>
+            </li>
+            {% empty %}
             <li>No posts yet.</li>
-        {% endfor %}
-    </ul>
+            {% endfor %}
+        </ul>
+    </section>
+</main>
 {% endblock content %}
+
+{% block footer %}
+<footer>
+    <div>
+      <h3>Contact me</h3>
+      <p>victormiguelvaquero@gmail.com</p>
+    </div>
+    <div>
+      <p>Copyright Victor M. Vaquero</p>
+    </div>
+  </footer>
+{% endblock footer %}
