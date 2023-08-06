@@ -6,6 +6,8 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: 40px;
+
+    min-height: 100vh;
 }
 
 main {
@@ -74,6 +76,10 @@ a {
 a:hover {
     text-decoration: none;
     color: #fffffe;
+}
+
+.filler {
+    flex: 1;
 }
 
 footer {
