@@ -1,17 +1,43 @@
 {% extends "base_menu.html" %}
+{% load static %}
+
+{% block head %}
+<!-- google fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+<!-- stylesheet -->
+<link rel="stylesheet" href="{% static 'myprojects/style.css' %}">
+{% endblock head %}
+
 {% block content %}
 
-    <h1>My projects</h1>
+<main>
+    <section class="wrapper" id="wrapper-heading">
+        <h1>Projects</h1>
+    </section>
 
-    {% for project in object_list %}
+    <section class="wrapper" id="wrapper-projects">
+
         <ul>
-            <li>{{project.title}} - <a href="{{ project.url }}"> <i class="fab fa-github"></i> GitHub</a></li>
-            <p>{{ project.description }}</p>
-            <hr>
-            
+            {% for project in object_list %}
+            <li>
+                <a href="{{ project.url }}">
+                    <div class="item-project">
+                        <h3>{{ project.title }}</h3>
+                        <p> {{ project.description }}</p>
+                    </div>
+                </a>
+            </li>
+            {% empty %}
+            <p>There are no projects yet! :( </p>
+            {% endfor %}
         </ul>
-    {% empty %}
-        <p>There are no projects yet! :( </p>
-    {% endfor %}
+    </section>
+</main>
 {% endblock content %}
 
+{% block footer %}
+
+{% endblock footer %}
