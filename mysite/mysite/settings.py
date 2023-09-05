@@ -48,6 +48,9 @@ class Dev(Configuration):
         'bposts.apps.BpostsConfig',
         'myprojects.apps.MyprojectsConfig',
         'todo.apps.TodoConfig',
+        'api.apps.ApiConfig',
+        'weight.apps.WeightConfig',
+
         
         # django allauth
         'allauth',
@@ -57,7 +60,8 @@ class Dev(Configuration):
 
         # extras
         'crispy_forms',
-        "crispy_bootstrap4",
+        'crispy_bootstrap4',
+        'django_extensions',
 
         # django restframework
         'rest_framework',
