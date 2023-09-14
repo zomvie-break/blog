@@ -20,7 +20,7 @@ class WeightListCreateAPIView(
 class WeightListSampleAPIView(
     generics.ListAPIView):
     serializer_class = WeightSerializer
-    queryset = Weight.objects.filter(user__username="admin")
+    queryset = Weight.objects.filter(user__id="1")
 
 class WeightDetailAPIView(
     UserQuerySetMixin,
