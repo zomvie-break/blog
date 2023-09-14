@@ -28,9 +28,9 @@
     <article>
       <h2>Want to track your weight?</h2>
       {% if user.is_authenticated %}
-      <p>Try it <a href="{% url 'weight-user' %}">here!</a></p>
+      <p>Try it <a href="{% url 'weight-frontend:weight-user' %}">here!</a></p>
       {% else %}
-      <p>Try <a href="{% url 'weight-user' %}">logging in</a> to track your weight!</p>
+      <p>Try <a href="{% url 'weight-frontend:weight-user' %}">logging in</a> to track your weight!</p>
       {% endif %}
     </article>
   </section>
