@@ -8,6 +8,7 @@ var activeItem = false;
 
 if (weightForm) {
     weightForm.addEventListener("submit", handleWeightForm);
+    handleDateInput();
 }
 
 if (weightContainer) {
@@ -35,12 +36,12 @@ function handleWeightContainer() {
 function handleWeightForm(event) {
     event.preventDefault();
     let endPoint = `${baseEndPoint}weight/`
-    handleDateInput(activeItem); // set input date to todays
+    // handleDateInput(); // set input date to todays
     // get form element from document
     var formData = new FormData(weightForm);
-    // console.log("form data:", formData);
+    console.log("form data:", formData);
     // output as an object
-    // console.log("object.fromEntries:", Object.fromEntries(formData));
+    console.log("object.fromEntries:", Object.fromEntries(formData));
     // create a dictionary type object from the form element
     var formProps = Object.fromEntries(formData);
 
@@ -106,6 +107,9 @@ function writeToWeightList(data, key) {
         // create a span element to handle update of the weight object
         let span_update = document.createElement("span");
         span_update.innerHTML = "&#9998;";
+        span_update.pk = pk;
+        span_update.mass = data[index][key];
+
         span_update.addEventListener("click", function () {
             toBeUpdated(data[index]["pk"], data[index][key]);
         });
@@ -166,7 +170,7 @@ function toBeUpdated(pk, mass) {
 
     var formMass = document.getElementById("form-mass");
     formMass.value = mass;
-    activeItem = true;
+    // activeItem = true;
 
 }
 
@@ -215,7 +219,7 @@ function addListDescription(nItems) {
 
 function handleDateInput(item = null) {
     d = document.getElementById("form-created");
-    if (!activeItem) {
+    if (!item) {
         var date = new Date();
 
         var day = date.getDate();
