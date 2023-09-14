@@ -39,9 +39,8 @@ function handleWeightForm(event) {
     // handleDateInput(); // set input date to todays
     // get form element from document
     var formData = new FormData(weightForm);
-    console.log("form data:", formData);
     // output as an object
-    console.log("object.fromEntries:", Object.fromEntries(formData));
+    // console.log("object.fromEntries:", Object.fromEntries(formData));
     // create a dictionary type object from the form element
     var formProps = Object.fromEntries(formData);
 
@@ -128,7 +127,6 @@ function writeToWeightList(data, key) {
 }
 
 function handleWeightDelete(pk) {
-    console.log("clicked delete!", pk);
     const destroyEndPoint = `${baseEndPoint}weight/${pk}/delete/`;
 
     var options = {
@@ -142,7 +140,6 @@ function handleWeightDelete(pk) {
         .then(function (response) {
             handleWeightContainer();
         })
-        .then(data => console.log(data))
         .catch(err => console.log(err));
 }
 
@@ -159,7 +156,6 @@ async function handleWeightDetail(pk) {
         const response = await fetch(detailEndPoint, options);
 
         const weight = await response.json();
-        console.log("weight", weight);
         return weight
     } catch(err){
         console.log(err)
@@ -172,21 +168,20 @@ async function toBeUpdated(pk) {
     var formMass = document.getElementById("form-mass");
     var formCreated = document.getElementById("form-created");
 
+    // set the form inputs to the values of the get request
     formMass.value = weight.mass;
     formCreated.value = weight.created.slice(0,10);
 
+    // set the activeItem to the current primary key of the item to be updated
     activeItem = pk;
 
 }
 
 function handleWeightUpdate() {
     var formData = new FormData(weightForm);
-    console.log("form data:", formData);
     // output as an object
-    console.log("object.fromEntries:", Object.fromEntries(formData));
+    // console.log("object.fromEntries:", Object.fromEntries(formData));
     var formProps = Object.fromEntries(formData);
-    console.log("csrfmiddleware", formProps.csrfmiddlewaretoken);
-    console.log("mass", formProps.mass);
 
     var updateEndPoint = `${baseEndPoint}weight/${activeItem}/update/`
 
@@ -208,9 +203,6 @@ function handleWeightUpdate() {
         .then(function (response) {
             handleWeightContainer();
             return response.json();
-        })
-        .then(data => {
-            console.log("put data:", data);
         })
         .catch(err => {
             console.log("err", err);
