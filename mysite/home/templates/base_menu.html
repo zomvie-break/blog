@@ -32,6 +32,11 @@
         <li class="nav-item {% active full_path task_list %}">
           <a class="nav-link" href="{% url 'todo-list:task-list' %}">Todo List</a>
         </li>
+
+        {% url 'weight-frontend:weight-sample' as weight_sample %}
+        <li class="nav-item {% active full_path weight_sample %}">
+          <a class="nav-link" href="{% url 'weight-frontend:weight-sample' %}">Weight</a>
+        </li>
         
         {% if user.is_authenticated %}
           {% url 'account_logout' as logout %}
