@@ -47,6 +47,7 @@ function handleWeightForm(event) {
 
     if (activeItem) {
         handleWeightUpdate();
+        handleDateInput();
     } else {
         var options = {
             method: "POST",
@@ -107,11 +108,9 @@ function writeToWeightList(data, key) {
         // create a span element to handle update of the weight object
         let span_update = document.createElement("span");
         span_update.innerHTML = "&#9998;";
-        span_update.pk = pk;
-        span_update.mass = data[index][key];
 
         span_update.addEventListener("click", function () {
-            toBeUpdated(data[index]["pk"], data[index][key]);
+            toBeUpdated(pk);
         });
 
         // append the span items to the li item and then
@@ -147,7 +146,8 @@ function handleWeightDelete(pk) {
         .catch(err => console.log(err));
 }
 
-function handleWeightDetail(pk) {
+async function handleWeightDetail(pk) {
+    
     var detailEndPoint = `${baseEndPoint}weight/${pk}/`
     var options = {
         method: "GET",
@@ -155,22 +155,27 @@ function handleWeightDetail(pk) {
             "Content-Type": "application/json",
         }
     }
-    fetch(detailEndPoint, options)
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(err => console.log(err));
+    try {
+        const response = await fetch(detailEndPoint, options);
 
+        const weight = await response.json();
+        console.log("weight", weight);
+        return weight
+    } catch(err){
+        console.log(err)
+    }
 }
 
-function toBeUpdated(pk, mass) {
-
+async function toBeUpdated(pk) {
+    // I'm calling the detail function here because I can!
+    const weight = await handleWeightDetail(pk);
     var formMass = document.getElementById("form-mass");
-    formMass.value = mass;
-    // activeItem = true;
+    var formCreated = document.getElementById("form-created");
+
+    formMass.value = weight.mass;
+    formCreated.value = weight.created.slice(0,10);
+
+    activeItem = pk;
 
 }
 
@@ -183,7 +188,7 @@ function handleWeightUpdate() {
     console.log("csrfmiddleware", formProps.csrfmiddlewaretoken);
     console.log("mass", formProps.mass);
 
-    var updateEndPoint = `${baseEndPoint}weight/${activeItem.pk}/update/`
+    var updateEndPoint = `${baseEndPoint}weight/${activeItem}/update/`
 
     var options = {
         method: "PUT",
