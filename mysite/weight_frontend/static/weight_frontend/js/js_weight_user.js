@@ -86,7 +86,7 @@ function writeToWeightList(data, key) {
     addListDescription(dataToPrint);
 
 
-    for (let index = data.length - 1; index > data.length - dataToPrint - 1; index--) {
+    for (let index = 0; index < dataToPrint ; index++) {
 
         // create an element li and add the mass to it.
         let li = document.createElement("li");
