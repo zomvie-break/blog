@@ -50,6 +50,7 @@ class Dev(Configuration):
         'todo.apps.TodoConfig',
         'api.apps.ApiConfig',
         'weight.apps.WeightConfig',
+        'weight_frontend.apps.WeightFrontendConfig',
 
         
         # django allauth
@@ -82,6 +83,9 @@ class Dev(Configuration):
     ]
 
     MIDDLEWARE = [
+        #to debug http 400
+        'weight.views.ExceptionLoggingMiddleware', 
+        # default middleware
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',

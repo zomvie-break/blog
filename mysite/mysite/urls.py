@@ -31,4 +31,5 @@ urlpatterns = [
     path('projects/', include('myprojects.urls')),
     path('todo/', include('todo.urls')),
     path('api/', include('api.urls')),
+    path('weight/', include('weight_frontend.urls')),
 ]
